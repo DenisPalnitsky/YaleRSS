@@ -4,13 +4,16 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.ServiceModel.Syndication;
+using System.Text;
 using System.Web.Http;
+using System.Web.Mvc;
+using System.Xml;
 
 namespace YaleRSS.Controllers
 {
     public class RssController : ApiController
     {
-        public RssActionResult Get()
+        public HttpResponseMessage Get()
         {            
             SyndicationFeed feed = new SyndicationFeed("Feed Title", "Feed Description", new Uri("http://Feed/Alternate/Link"), "FeedID", DateTime.Now);
            
@@ -32,7 +35,23 @@ namespace YaleRSS.Controllers
             feed.Language = "en-us";
             feed.LastUpdatedTime = DateTime.Now;
 
-            return new RssActionResult() { Feed = feed }; 
+            var formatter = new Rss20FeedFormatter(feed);
+            var xws = new XmlWriterSettings { Encoding = Encoding.UTF8 };
+
+
+            StringBuilder sb = new StringBuilder() ;
+            using (var xmlWriter = XmlWriter.Create(sb, xws))
+            {
+                formatter.WriteTo(xmlWriter);
+                xmlWriter.Flush();
+            }
+         
+
+            var response = new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(sb.ToString(),
+                Encoding.UTF8,
+                "application/rss+xml") };
+            return response;
+             
         }
     }
 }
