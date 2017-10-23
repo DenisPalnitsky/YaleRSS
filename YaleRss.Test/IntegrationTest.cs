@@ -11,11 +11,12 @@ namespace YaleRss.Test
     [TestFixture]
     public class IntegrationTest
     {
+        [Test]
         public void TestConnection()
         {
-            var repo = new PodcastRepository(DbContext.Create());
-            var p = repo.GetAllPodcasts();
-            Assert.Greater(p.Count, 0);
+            var repo = new CourseRepository(DbContext.Create());
+            var p = repo.Philosophy.Lectures;
+            Assert.Greater(p.Count(), 0);
         }
     }
 }

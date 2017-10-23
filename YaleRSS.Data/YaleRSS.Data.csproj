@@ -52,9 +52,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CourseEntity.cs" />
+    <Compile Include="CourseRepository.cs" />
     <Compile Include="DbContext.cs" />
-    <Compile Include="PodcastEntity.cs" />
-    <Compile Include="PodcastRepository.cs" />
+    <Compile Include="LectureEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

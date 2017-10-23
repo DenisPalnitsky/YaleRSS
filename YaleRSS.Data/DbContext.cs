@@ -22,10 +22,10 @@ namespace YaleRSS.Data
             return context;            
         }
 
-        public IMongoCollection<PodcastEntity> Philisophy
+        public IMongoCollection<CourseEntity> Cources
         {
-            get { return _database.GetCollection<PodcastEntity>("lectures");  }
+            get { return _database.GetCollection<CourseEntity>("courses"); }
         }
-   
+      
     }
 }

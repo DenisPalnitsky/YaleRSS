@@ -16,7 +16,9 @@ namespace YaleRSS.Controllers
     public class RssController : ApiController
     {
 
-        PodcastRepository _repo = new PodcastRepository(DbContext.Create());
+        CourseRepository _repo = new CourseRepository(DbContext.Create());
+
+        readonly DateTime _startDate = new DateTime(2011, 1, 18);
 
 
         public HttpResponseMessage Get()
@@ -29,17 +31,18 @@ namespace YaleRSS.Controllers
             feed.Description = new TextSyndicationContent("This is a sample feed");
 
             List<SyndicationItem> items = new List<SyndicationItem>();
-            var lectures = _repo.GetAllPodcasts();
+            var course = _repo.Philosophy;
+           
 
-            foreach (var lecture in lectures)
+            foreach (var lecture in course.Lectures)
             {
                 SyndicationItem item = new SyndicationItem()
                 {
                     Content = SyndicationContent.CreateUrlContent(
-                        new Uri("http://openmedia.yale.edu/cgi-bin/open_yale/media_downloader.cgi?file=/courses/spring11/phil181/mp3/phil181_01_011111.mp3"), "audio/mpeg"),
+                        new Uri(String.Format(course.AudioUrlPattern, lecture.Order)), "audio/mpeg"),
 
-                    Title = new TextSyndicationContent(lecture.name),                     
-                    PublishDate = DateTime.Now.AddDays(-1)
+                    Title = new TextSyndicationContent(lecture.Name),
+                    PublishDate = _startDate.AddDays(lecture.Order)
                 };
                 items.Add(item);
             }
