@@ -25,7 +25,7 @@ namespace YaleRSS.Controllers
         {            
            
 
-            SyndicationFeed feed = new SyndicationFeed("Yale lectures", "Yale lectures", new Uri("http://Feed/Alternate/Link"), "FeedID", DateTime.Now);
+            SyndicationFeed feed = new SyndicationFeed("Yale lectures", "Yale lectures", new Uri(this.ActionContext.Request.RequestUri.AbsoluteUri),  this.ActionContext.Request.RequestUri.AbsoluteUri , DateTime.Now);
                        
             feed.Copyright = new TextSyndicationContent("No Copyright");
             feed.Description = new TextSyndicationContent("This is a sample feed");
