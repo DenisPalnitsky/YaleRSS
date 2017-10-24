@@ -42,7 +42,8 @@ namespace YaleRSS.Controllers
                         new Uri(String.Format(course.AudioUrlPattern, lecture.Order)), "audio/mpeg"),
 
                     Title = new TextSyndicationContent(lecture.Name),
-                    PublishDate = _startDate.AddDays(lecture.Order)
+                    PublishDate = _startDate.AddDays(lecture.Order),
+                    Summary = new TextSyndicationContent(lecture.Name)
                 };
                 items.Add(item);
             }
