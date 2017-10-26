@@ -22,11 +22,14 @@ namespace YaleRSS.Controllers
 
 
         public HttpResponseMessage Get()
-        {            
-           
+        {             
+            SyndicationFeed feed = new SyndicationFeed("Yale lectures", "Yale lectures",
+                new Uri(this.ActionContext.Request.RequestUri.AbsoluteUri),  
+                this.ActionContext.Request.RequestUri.AbsoluteUri , 
+                DateTime.Now);
+            feed.Id = this.ActionContext.Request.RequestUri.AbsoluteUri;
 
-            SyndicationFeed feed = new SyndicationFeed("Yale lectures", "Yale lectures", new Uri(this.ActionContext.Request.RequestUri.AbsoluteUri),  this.ActionContext.Request.RequestUri.AbsoluteUri , DateTime.Now);
-                       
+
             feed.Copyright = new TextSyndicationContent("No Copyright");
             feed.Description = new TextSyndicationContent("This is a sample feed");
 
@@ -36,15 +39,13 @@ namespace YaleRSS.Controllers
 
             foreach (var lecture in course.Lectures)
             {
-                SyndicationItem item = new SyndicationItem()
-                {
-                    Content = SyndicationContent.CreateUrlContent(
-                        new Uri(String.Format(course.AudioUrlPattern, lecture.Order)), "audio/mpeg"),
+                SyndicationItem item = new SyndicationItem(
+                    lecture.Name,
+                    SyndicationContent.CreateUrlContent(GetAudioUri(course, lecture), "audio/mpeg"), 
+                    GetAudioUri(course, lecture),
+                    GetAudioUri(course, lecture).ToString(), 
+                    DateTimeOffset.Now.AddDays(-1));
 
-                    Title = new TextSyndicationContent(lecture.Name),
-                    PublishDate = _startDate.AddDays(lecture.Order),
-                    Summary = new TextSyndicationContent(lecture.Name)
-                };
                 items.Add(item);
             }
 
@@ -76,7 +77,11 @@ namespace YaleRSS.Controllers
                 return response;
             }   
         }
-       
+
+        private static Uri GetAudioUri(CourseEntity course, LectureEntity lecture)
+        {
+            return new Uri(String.Format(course.AudioUrlPattern, lecture.Order));
+        }
     }
 }
     
