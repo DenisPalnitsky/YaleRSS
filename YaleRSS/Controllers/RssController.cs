@@ -9,6 +9,7 @@ using System.Text;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Xml;
+using System.Xml.Linq;
 using YaleRSS.Data;
 
 namespace YaleRSS.Controllers
@@ -45,6 +46,13 @@ namespace YaleRSS.Controllers
                     GetAudioUri(course, lecture),
                     GetAudioUri(course, lecture).ToString(), 
                     DateTimeOffset.Now.AddDays(-1));
+
+                item.ElementExtensions.Add(
+                            new XElement("enclosure",
+                                new XAttribute("type", "audio/mpeg"),
+                                new XAttribute("url", GetAudioUri(course, lecture).ToString())
+                            ).CreateReader()
+                        );
 
                 items.Add(item);
             }
