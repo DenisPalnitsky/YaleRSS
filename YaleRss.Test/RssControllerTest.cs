@@ -17,7 +17,6 @@ namespace YaleRss.Test
         public void Test()
         {
 
-
             RssController controller = new RssController();
             var d = controller.Get();
             DataContractSerializer ser = new DataContractSerializer(d.GetType());

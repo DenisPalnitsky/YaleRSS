@@ -24,6 +24,13 @@ namespace YaleRSS.Data
             return _context.Cources.Find(_ => true).ToList();
         }
 
+        public CourseEntity GetCourse(string courseId)
+        {           
+            var filter = Builders<CourseEntity>.Filter.Eq(c => c.CourseId, courseId);
+            return _context.Cources
+                                .Find(filter).Single();           
+        }
+
         public CourseEntity Philosophy
         {
              get {

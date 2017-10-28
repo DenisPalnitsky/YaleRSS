@@ -57,6 +57,7 @@
     <Compile Include="DbContext.cs" />
     <Compile Include="LectureEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebData\YaleSiteRequest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

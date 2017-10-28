@@ -184,6 +184,7 @@
     <Compile Include="Controllers\RssActionResult.cs" />
     <Compile Include="Controllers\RssController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\LecturesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

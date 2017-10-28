@@ -31,7 +31,7 @@ namespace YaleRSS.Controllers
             feed.Id = this.ActionContext.Request.RequestUri.AbsoluteUri;
 
 
-            feed.Copyright = new TextSyndicationContent("No Copyright");
+            feed.Copyright = new TextSyndicationContent("Most of the lectures and course material within Open Yale Courses are licensed under a Creative Commons Attribution-Noncommercial-Share Alike 3.0 license. ");
             feed.Description = new TextSyndicationContent("This is a sample feed");
 
             List<SyndicationItem> items = new List<SyndicationItem>();
@@ -42,15 +42,15 @@ namespace YaleRSS.Controllers
             {
                 SyndicationItem item = new SyndicationItem(
                     lecture.Name,
-                    SyndicationContent.CreateUrlContent(GetAudioUri(course, lecture), "audio/mpeg"), 
-                    GetAudioUri(course, lecture),
-                    GetAudioUri(course, lecture).ToString(), 
+                    SyndicationContent.CreateUrlContent(GetAudioUri( lecture), "audio/mpeg"), 
+                    GetAudioUri( lecture),
+                    GetAudioUri( lecture).ToString(), 
                     DateTimeOffset.Now.AddDays(-1));
 
                 item.ElementExtensions.Add(
                             new XElement("enclosure",
                                 new XAttribute("type", "audio/mpeg"),
-                                new XAttribute("url", GetAudioUri(course, lecture).ToString())
+                                new XAttribute("url", GetAudioUri( lecture).ToString())
                             ).CreateReader()
                         );
 
@@ -86,9 +86,11 @@ namespace YaleRSS.Controllers
             }   
         }
 
-        private static Uri GetAudioUri(CourseEntity course, LectureEntity lecture)
+        private Uri GetAudioUri(LectureEntity lecture)
         {
-            return new Uri(String.Format(course.AudioUrlPattern, lecture.Order));
+            
+            return new Uri(this.Url.Link("DefaultApi", new {  Controller = "Lectures",  id = lecture.LectureId }));           
+            //return Url.Link("//", lecture.LectureId) );
         }
     }
 }
