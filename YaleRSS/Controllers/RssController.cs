@@ -32,7 +32,7 @@ namespace YaleRSS.Controllers
 
 
             feed.Copyright = new TextSyndicationContent("Most of the lectures and course material within Open Yale Courses are licensed under a Creative Commons Attribution-Noncommercial-Share Alike 3.0 license. ");
-            feed.Description = new TextSyndicationContent("This is a sample feed");
+            feed.Description = new TextSyndicationContent("Lectures from Open Yale Courses http://oyc.yale.edu/ ");
 
             List<SyndicationItem> items = new List<SyndicationItem>();
             var course = _repo.Philosophy;
@@ -41,7 +41,7 @@ namespace YaleRSS.Controllers
             foreach (var lecture in course.Lectures)
             {
                 SyndicationItem item = new SyndicationItem(
-                    lecture.Name,
+                    $"{lecture.LectureNumber}.{lecture.Name}",
                     SyndicationContent.CreateUrlContent(GetAudioUri( lecture), "audio/mpeg"), 
                     GetAudioUri( lecture),
                     GetAudioUri( lecture).ToString(), 
@@ -50,7 +50,7 @@ namespace YaleRSS.Controllers
                 item.ElementExtensions.Add(
                             new XElement("enclosure",
                                 new XAttribute("type", "audio/mpeg"),
-                                new XAttribute("url", GetAudioUri( lecture).ToString())
+                                new XAttribute("url", GetAudioUri(lecture).ToString())
                             ).CreateReader()
                         );
 
