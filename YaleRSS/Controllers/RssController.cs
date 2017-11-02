@@ -45,7 +45,7 @@ namespace YaleRSS.Controllers
                     SyndicationContent.CreateUrlContent(GetAudioUri(lecture), "audio/mpeg"), 
                     GetAudioUri( lecture),
                     GetAudioUri( lecture).ToString(), 
-                    DateTimeOffset.Now.AddDays(-1));
+                    lecture.DateOfLecture );
 
                 item.ElementExtensions.Add(
                             new XElement("enclosure",
@@ -87,8 +87,7 @@ namespace YaleRSS.Controllers
         }
 
         private Uri GetAudioUri(LectureEntity lecture)
-        {
-            
+        {            
             return new Uri(this.Url.Link("DefaultApi", new {  Controller = "Lectures",  id = lecture.LectureId }));           
             //return Url.Link("//", lecture.LectureId) );
         }
