@@ -42,7 +42,7 @@ namespace YaleRSS.Controllers
             {
                 SyndicationItem item = new SyndicationItem(
                     $"{lecture.LectureNumber}.{lecture.Name}",
-                    SyndicationContent.CreateUrlContent(GetAudioUri( lecture), "audio/mpeg"), 
+                    SyndicationContent.CreateUrlContent(GetAudioUri(lecture), "audio/mpeg"), 
                     GetAudioUri( lecture),
                     GetAudioUri( lecture).ToString(), 
                     DateTimeOffset.Now.AddDays(-1));
@@ -73,11 +73,11 @@ namespace YaleRSS.Controllers
                 {
                     formatter.WriteTo(xmlWriter);
                     xmlWriter.Flush();
-                }
+                }                
 
                 var response = new HttpResponseMessage(HttpStatusCode.OK)
                 {
-                    Content = new StringContent(Encoding.UTF8.GetString(ms.GetBuffer()),
+                    Content = new StringContent(Encoding.UTF8.GetString(ms.ToArray()),
                     Encoding.UTF8,
                     "application/rss+xml")
                 };
