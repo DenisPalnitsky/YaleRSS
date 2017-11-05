@@ -1,7 +1,8 @@
-/packages
-/YaleRSS/bin
-/YaleRSS/obj
-/YaleRss.Test/bin
-/YaleRss.Test/obj
-Debug
-/.vs/YaleRSS/v15/.suo
+**/packages
+
+**/bin
+**
+/obj
+**/.vs
+**/.suo
+
