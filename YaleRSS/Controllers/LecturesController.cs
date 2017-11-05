@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using System.Web.Http;
 using YaleRSS.Data;
 
@@ -19,13 +20,15 @@ namespace YaleRSS.Controllers
             var course = _repo.Philosophy;
             var lecture = course.Lectures.Single(l => l.LectureId.Equals(id, StringComparison.CurrentCultureIgnoreCase));
            
+            var yaleResponse = YaleRSS.Data.WebData.YaleSiteRequest.GetFile(String.Format(course.AudioUrlPattern, lecture.LectureId));
+
             HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
-            response.Content = new StreamContent(YaleRSS.Data.WebData.YaleSiteRequest.GetFile(String.Format(course.AudioUrlPattern, lecture.LectureId)));
-            response.Content.Headers.ContentType =
-                        new MediaTypeHeaderValue("application/octet-stream");
+            response.Content = new StreamContent(yaleResponse.GetResponseStream());
+            response.Content.Headers.ContentType = MediaTypeHeaderValue.Parse(yaleResponse.ContentType);            
             response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment");
             response.Content.Headers.ContentDisposition.FileName = lecture.LectureId + ".mp3";
-            return response;     
+            response.Content.Headers.ContentLength = yaleResponse.ContentLength;            
+            return response;
         }
 
 

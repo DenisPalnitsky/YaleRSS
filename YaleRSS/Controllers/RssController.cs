@@ -47,6 +47,8 @@ namespace YaleRSS.Controllers
                     GetAudioUri( lecture).ToString(), 
                     lecture.DateOfLecture );
 
+                item.PublishDate = lecture.DateOfLecture;
+
                 item.ElementExtensions.Add(
                             new XElement("enclosure",
                                 new XAttribute("type", "audio/mpeg"),
