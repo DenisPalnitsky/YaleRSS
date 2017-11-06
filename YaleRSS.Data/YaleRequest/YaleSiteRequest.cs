@@ -7,7 +7,6 @@ namespace YaleRSS.Data.WebData
 {
     public class YaleSiteRequest
     {
-
         public static WebResponse GetFile (string url)
         {
             // Original Request
