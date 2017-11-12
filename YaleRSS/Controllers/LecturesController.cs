@@ -16,7 +16,7 @@ namespace YaleRSS.Controllers
         CourseRepository _repo = new CourseRepository(DbContext.Create());
 
         public HttpResponseMessage GetLectures(string id)
-        {
+        {            
             Trace.WriteLine($"Downloading lecture { id }");
             var course = _repo.Philosophy;
             var lecture = course.Lectures.Single(l => l.LectureId.Equals(id, StringComparison.CurrentCultureIgnoreCase));
@@ -35,15 +35,17 @@ namespace YaleRSS.Controllers
                 yaleResponse = YaleRSS.Data.WebData.YaleSiteRequest.GetFile(String.Format(course.AlternativeAudioUrlPattern, lecture.LectureId));
             }
 
+            Trace.WriteLine("Setting headers");
             response.Content.Headers.ContentType = MediaTypeHeaderValue.Parse(yaleResponse.ContentType);
             response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment");
             response.Content.Headers.ContentDisposition.FileName = lecture.LectureId + ".mp3";
             response.Content.Headers.ContentLength = yaleResponse.ContentLength;
 
+            Trace.WriteLine("Returning response");
             return response;
         }
 
-
+        
         
     }
 }
