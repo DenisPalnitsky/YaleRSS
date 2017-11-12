@@ -7,7 +7,7 @@ namespace YaleRSS.Data.WebData
 {
     public class YaleSiteRequest
     {
-        public static WebResponse GetFile (string url)
+        public static HttpWebResponse GetFile (string url)
         {
             // Original Request
             // GET http://openmedia.yale.edu/cgi-bin/open_yale/media_downloader.cgi?file=/courses/spring11/phil181/mp3/phil181_01_011111.mp3 HTTP/1.1
@@ -31,7 +31,7 @@ namespace YaleRSS.Data.WebData
             //HttpClient client = new HttpClient();
             //client.DefaultRequestHeaders.Referrer =new System.Uri( @"http://oyc.yale.edu/courses/");
 
-            return request.GetResponse();
+            return (HttpWebResponse) request.GetResponse();
         }
 
     }

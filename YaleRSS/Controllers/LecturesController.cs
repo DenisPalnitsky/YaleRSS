@@ -20,14 +20,24 @@ namespace YaleRSS.Controllers
             var course = _repo.Philosophy;
             var lecture = course.Lectures.Single(l => l.LectureId.Equals(id, StringComparison.CurrentCultureIgnoreCase));
            
-            var yaleResponse = YaleRSS.Data.WebData.YaleSiteRequest.GetFile(String.Format(course.AudioUrlPattern, lecture.LectureId));
 
+
+            var yaleResponse = YaleRSS.Data.WebData.YaleSiteRequest.GetFile(String.Format(course.AudioUrlPattern, lecture.LectureId));
             HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
-            response.Content = new StreamContent(yaleResponse.GetResponseStream());
-            response.Content.Headers.ContentType = MediaTypeHeaderValue.Parse(yaleResponse.ContentType);            
+
+            if (yaleResponse.StatusCode == HttpStatusCode.OK)
+            {                
+                response.Content = new StreamContent(yaleResponse.GetResponseStream());             
+            }
+            else
+            {
+                yaleResponse = YaleRSS.Data.WebData.YaleSiteRequest.GetFile(String.Format(course.AlternativeAudioUrlPattern, lecture.LectureId));
+            }
+
+            response.Content.Headers.ContentType = MediaTypeHeaderValue.Parse(yaleResponse.ContentType);
             response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment");
             response.Content.Headers.ContentDisposition.FileName = lecture.LectureId + ".mp3";
-            response.Content.Headers.ContentLength = yaleResponse.ContentLength;            
+            response.Content.Headers.ContentLength = yaleResponse.ContentLength;
             return response;
         }
 

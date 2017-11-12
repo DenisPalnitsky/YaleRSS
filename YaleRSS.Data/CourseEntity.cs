@@ -15,6 +15,7 @@ namespace YaleRSS.Data
         public string CourseId { get; set; }
         public string Name { get; set; }
         public string AudioUrlPattern { get; set; }
+        public string AlternativeAudioUrlPattern { get; set; }
         public IEnumerable<LectureEntity> Lectures { get; set; }
     }
 }
