@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.ExceptionHandling;
+using YaleRSS.ErrorHandler;
 
 namespace YaleRSS
 {
@@ -10,6 +12,7 @@ namespace YaleRSS
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            config.Services.Add(typeof(IExceptionLogger), new TraceExceptionLogger());
 
             // Web API routes
             config.MapHttpAttributeRoutes();

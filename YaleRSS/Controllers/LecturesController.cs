@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -14,23 +15,23 @@ namespace YaleRSS.Controllers
     {
         CourseRepository _repo = new CourseRepository(DbContext.Create());
 
-        //[Route("Lectures/{courseId}/{lectureId}")]
         public HttpResponseMessage GetLectures(string id)
         {
+            Trace.WriteLine($"Downloading lecture { id }");
             var course = _repo.Philosophy;
             var lecture = course.Lectures.Single(l => l.LectureId.Equals(id, StringComparison.CurrentCultureIgnoreCase));
-           
-
-
+          
             var yaleResponse = YaleRSS.Data.WebData.YaleSiteRequest.GetFile(String.Format(course.AudioUrlPattern, lecture.LectureId));
             HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
 
             if (yaleResponse.StatusCode == HttpStatusCode.OK)
-            {                
+            {
+                Trace.WriteLine("Attempt to get stream from Yale succeeded");
                 response.Content = new StreamContent(yaleResponse.GetResponseStream());             
             }
             else
             {
+                Trace.WriteLine("Attempt to get stream from Yale failed. Sourcing from storage");
                 yaleResponse = YaleRSS.Data.WebData.YaleSiteRequest.GetFile(String.Format(course.AlternativeAudioUrlPattern, lecture.LectureId));
             }
 
@@ -38,6 +39,7 @@ namespace YaleRSS.Controllers
             response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment");
             response.Content.Headers.ContentDisposition.FileName = lecture.LectureId + ".mp3";
             response.Content.Headers.ContentLength = yaleResponse.ContentLength;
+
             return response;
         }
 
