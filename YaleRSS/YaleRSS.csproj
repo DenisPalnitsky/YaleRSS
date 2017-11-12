@@ -195,7 +195,6 @@
     <Compile Include="Controllers\RssController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\LecturesController.cs" />
-    <Compile Include="ErrorHandler\AiHandleErrorAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -257,6 +256,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ErrorHandler\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
