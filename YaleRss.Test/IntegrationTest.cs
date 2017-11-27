@@ -1,12 +1,5 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using YaleRSS.Data;
 
 namespace YaleRss.Test
@@ -21,12 +14,6 @@ namespace YaleRss.Test
             var p = repo.Philosophy.Lectures;
             Assert.Greater(p.Count(), 0);
         }
-
-        [Test]
-        public void GetFile()
-        {
- 
-
-        }
+       
     }
 }

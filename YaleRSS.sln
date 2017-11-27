@@ -9,7 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YaleRss.Test", "YaleRss.Tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YaleRSS.Data", "YaleRSS.Data\YaleRSS.Data.csproj", "{A3348C30-A7F2-4E5A-9389-8E065CAB7259}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YaleRss.LecturesDataExtractor", "YaleRss.LecturesDataExtractor\YaleRss.LecturesDataExtractor.csproj", "{2B4E3E2A-9F59-424D-BCBF-C8AAF30732B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YaleRss.LecturesDataExtractor", "YaleRss.LecturesDataExtractor\YaleRss.LecturesDataExtractor.csproj", "{2B4E3E2A-9F59-424D-BCBF-C8AAF30732B6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{1A9D71BF-BEA5-4F5F-B350-1D16756DF40F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +38,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2B4E3E2A-9F59-424D-BCBF-C8AAF30732B6} = {1A9D71BF-BEA5-4F5F-B350-1D16756DF40F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6097B2D1-F980-4191-9EA9-3E919C759579}
