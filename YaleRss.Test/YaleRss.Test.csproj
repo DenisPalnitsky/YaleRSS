@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>YaleRss.Test</RootNamespace>
     <AssemblyName>YaleRss.Test</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -65,7 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\YaleRSS.Data\YaleRSS.Data.csproj">
-      <Project>{a3348c30-a7f2-4e5a-9389-8e065cab7259}</Project>
+      <Project>{5d912937-699b-4217-bf6e-5c857e735896}</Project>
       <Name>YaleRSS.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\YaleRSS\YaleRSS.csproj">

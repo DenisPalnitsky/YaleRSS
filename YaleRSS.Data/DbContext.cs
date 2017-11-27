@@ -1,9 +1,4 @@
 ﻿using MongoDB.Driver;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace YaleRSS.Data
 {
@@ -22,7 +17,7 @@ namespace YaleRSS.Data
             return context;            
         }
 
-        public IMongoCollection<CourseEntity> Cources
+        internal IMongoCollection<CourseEntity> Cources
         {
             get { return _database.GetCollection<CourseEntity>("courses"); }
         }
