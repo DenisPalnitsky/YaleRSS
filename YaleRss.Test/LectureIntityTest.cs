@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
-using YaleRSS.Data;
+using YaleRss.Data;
 
 namespace YaleRss.Test
 {

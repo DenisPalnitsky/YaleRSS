@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\YaleRSS.Data\YaleRSS.Data.csproj" />
+    <ProjectReference Include="..\YaleRSS.Data\YaleRss.Data.csproj" />
   </ItemGroup>
 
 </Project>

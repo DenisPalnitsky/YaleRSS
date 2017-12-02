@@ -1,6 +1,6 @@
 ﻿using MongoDB.Driver;
 
-namespace YaleRSS.Data
+namespace YaleRss.Data
 {
     public class DbContext
     {

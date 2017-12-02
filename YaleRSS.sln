@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YaleRSS", "YaleRSS\YaleRSS.csproj", "{F44496A9-121E-4343-91EB-92327628626A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YaleRss.Test", "YaleRss.Test\YaleRss.Test.csproj", "{85A8FE57-4940-420C-9A8B-814B0BCB42A9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YaleRss.LecturesDataExtractor", "YaleRss.LecturesDataExtractor\YaleRss.LecturesDataExtractor.csproj", "{2B4E3E2A-9F59-424D-BCBF-C8AAF30732B6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{1A9D71BF-BEA5-4F5F-B350-1D16756DF40F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YaleRSS.Data", "YaleRSS.Data\YaleRSS.Data.csproj", "{5D912937-699B-4217-BF6E-5C857E735896}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YaleRss.Data", "YaleRSS.Data\YaleRss.Data.csproj", "{5D912937-699B-4217-BF6E-5C857E735896}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YaleRss", "YaleRss\YaleRss.csproj", "{63ED1892-7BA2-4F53-B26D-D2F66F7E5CC0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F44496A9-121E-4343-91EB-92327628626A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F44496A9-121E-4343-91EB-92327628626A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F44496A9-121E-4343-91EB-92327628626A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F44496A9-121E-4343-91EB-92327628626A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{85A8FE57-4940-420C-9A8B-814B0BCB42A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{85A8FE57-4940-420C-9A8B-814B0BCB42A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85A8FE57-4940-420C-9A8B-814B0BCB42A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -35,6 +31,10 @@ Global
 		{5D912937-699B-4217-BF6E-5C857E735896}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D912937-699B-4217-BF6E-5C857E735896}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D912937-699B-4217-BF6E-5C857E735896}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63ED1892-7BA2-4F53-B26D-D2F66F7E5CC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63ED1892-7BA2-4F53-B26D-D2F66F7E5CC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63ED1892-7BA2-4F53-B26D-D2F66F7E5CC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63ED1892-7BA2-4F53-B26D-D2F66F7E5CC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

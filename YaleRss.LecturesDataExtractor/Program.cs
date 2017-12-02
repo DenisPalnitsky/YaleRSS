@@ -3,8 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
-using YaleRSS.Data;
-using YaleRSS.Data.WebData;
+using YaleRss.Data;
+using YaleRss.Data.WebData;
 
 namespace YaleRss.LecturesDataExtractor
 {

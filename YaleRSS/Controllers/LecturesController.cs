@@ -1,17 +1,19 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web.Http;
-using YaleRSS.Data;
+using YaleRss.Data;
 
-namespace YaleRSS.Controllers
+namespace YaleRss.Controllers
 {
-    public class LecturesController : ApiController
+    [Route("api/[controller]", Name = RouteNames.UserProfile)]
+    public class LecturesController : Controller
     {
         CourseRepository _repo = new CourseRepository(DbContext.Create());
 
+        [HttpGet("{id}")]
         public HttpResponseMessage GetLectures(string id)
         {            
             Trace.WriteLine($"Downloading lecture { id }");

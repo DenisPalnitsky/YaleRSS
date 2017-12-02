@@ -65,13 +65,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\YaleRSS.Data\YaleRSS.Data.csproj">
+    <ProjectReference Include="..\YaleRSS.Data\YaleRss.Data.csproj">
       <Project>{5d912937-699b-4217-bf6e-5c857e735896}</Project>
-      <Name>YaleRSS.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\YaleRSS\YaleRSS.csproj">
-      <Project>{f44496a9-121e-4343-91eb-92327628626a}</Project>
-      <Name>YaleRSS</Name>
+      <Name>YaleRss.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
