@@ -106,7 +106,7 @@ namespace YaleRss.Controllers
 
         private Uri GetAudioUri(LectureEntity lecture)
         {
-            var url = this.Url.Link(RouteNames.UserProfile, new { Controller = "Lectures", id = lecture.LectureId });
+            var url = this.Url.Link(RouteNames.Lectures, new { Controller = "Lectures", id = lecture.LectureId });
             return new Uri(url);           
         }
     }

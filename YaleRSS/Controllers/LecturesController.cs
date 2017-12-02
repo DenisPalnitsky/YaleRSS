@@ -13,7 +13,7 @@ namespace YaleRss.Controllers
     {
         CourseRepository _repo = new CourseRepository(DbContext.Create());
 
-        [HttpGet("api/lectures/{id}")]
+        [HttpGet("api/lectures/{id}", Name=RouteNames.Lectures )]
         public IActionResult GetLectures(string id)
         {            
             Trace.WriteLine($"Downloading lecture { id }");
