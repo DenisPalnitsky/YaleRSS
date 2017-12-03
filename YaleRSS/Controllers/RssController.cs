@@ -3,18 +3,16 @@ using Microsoft.SyndicationFeed;
 using Microsoft.SyndicationFeed.Rss;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Text;
 using System.Xml;
-using System.Xml.Linq;
 using YaleRss.Data;
 
 namespace YaleRss.Controllers
 {
-   
+
     [Route("api/[controller]", Name = RouteNames.UserProfile)]
     public class RssController : Controller
     {
@@ -25,21 +23,10 @@ namespace YaleRss.Controllers
 
         [HttpGet]
         public IActionResult Get()
-        {             
-            //SyndicationFeed feed = new SyndicationFeed("Yale lectures", "Yale lectures",
-            //    new Uri(this.ActionContext.Request.RequestUri.AbsoluteUri),  
-            //    this.ActionContext.Request.RequestUri.AbsoluteUri , 
-            //    DateTime.Now);
-            //feed.Id = this.ActionContext.Request.RequestUri.AbsoluteUri;
-
-
-            //feed.Copyright =  new TextSyndicationContent();
-            //feed.Description = new TextSyndicationContent();
-
+        {                       
             List<SyndicationItem> items = new List<SyndicationItem>();
             var course = _repo.Philosophy;
            
-
             foreach (var lecture in course.Lectures)
             {
                 SyndicationItem item = new SyndicationItem()
@@ -57,16 +44,9 @@ namespace YaleRss.Controllers
                 items.Add(item);
             }
 
-            //feed.Items = items;
-
-            //feed.Language = "en-us";
-            //feed.LastUpdatedTime = DateTime.Now;
-
-            var formatter = new RssFormatter();
-            
-            var xws = new XmlWriterSettings { Indent = true, Encoding = Encoding.UTF8, Async = true };
-
-            
+   
+            var formatter = new RssFormatter();            
+            var xws = new XmlWriterSettings { Indent = true, Encoding = Encoding.UTF8, Async = true };            
 
             using (MemoryStream ms = new MemoryStream())
             {
@@ -78,6 +58,9 @@ namespace YaleRss.Controllers
                     feedWriter.WriteDescription("Lectures from Open Yale Courses http://oyc.yale.edu/ ");
                     feedWriter.WriteTitle("Yale Open lectures");
                     feedWriter.WriteLastBuildDate(DateTime.Now);
+                    
+                    feedWriter.WriteLanguage(CultureInfo.GetCultureInfo("en-us"));
+
                     foreach (var item in items) {
                        
                         var content = new SyndicationContent(formatter.CreateContent(item));
