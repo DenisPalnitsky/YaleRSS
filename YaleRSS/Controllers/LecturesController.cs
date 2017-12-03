@@ -33,12 +33,15 @@ namespace YaleRss.Controllers
                 yaleResponse = YaleRSS.Data.WebData.YaleSiteRequest.GetFile(String.Format(course.AlternativeAudioUrlPattern, lecture.LectureId));
             }
 
+            if (yaleResponse.ContentLength> 0)
+                Response.Headers.ContentLength = yaleResponse.ContentLength;
+
             FileStreamResult response = new FileStreamResult(yaleResponse.GetResponseStream(),
                  yaleResponse.ContentType);
-            
 
             Trace.WriteLine("Setting headers");
-            
+
+                                
             response.FileDownloadName = lecture.LectureId + ".mp3";
           
             Trace.WriteLine("Returning response");
