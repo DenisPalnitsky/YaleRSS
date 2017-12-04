@@ -1,25 +1,22 @@
 ﻿using MongoDB.Driver;
+using System.Linq;
 
 namespace YaleRss.Data
 {
-    public class DbContext
+    public class DbContext : IDbContext
     {
-        IMongoDatabase _database;
+        private IMongoDatabase _database;
 
-        private DbContext() { }
+        public DbContext() {
 
-        public static DbContext Create()
-        {           
-            var client = new MongoClient(@"mongodb://user:911@ds119685.mlab.com:19685/yale_courses");
-            var context = new DbContext();
-            context._database  = client.GetDatabase("yale_courses");
-                        
-            return context;            
+            var client = new MongoClient(@"mongodb://reader:911@ds119685.mlab.com:19685/yale_courses");
+            _database = client.GetDatabase("yale_courses");
         }
 
-        internal IMongoCollection<CourseEntity> Cources
-        {
-            get { return _database.GetCollection<CourseEntity>("courses"); }
+        // This property may require to return IMongoCollection if IQueryable will misbehave
+        public IQueryable<CourseEntity> Cources
+        {            
+            get { return _database.GetCollection<CourseEntity>("courses").AsQueryable(); }
         }
       
     }

@@ -19,7 +19,6 @@ namespace YaleRss.Data
                 // phil181_01_011111
                 return DateTime.ParseExact(LectureId.Substring(LectureId.Length - 6, 6),
                       "MMddyy", System.Globalization.CultureInfo.InvariantCulture);
-
             }
         }
     }

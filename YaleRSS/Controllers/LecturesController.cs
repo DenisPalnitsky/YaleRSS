@@ -12,7 +12,12 @@ namespace YaleRss.Controllers
     //[Route("api/[controller]", Name = RouteNames.UserProfile)]
     public class LecturesController : Controller
     {
-        CourseRepository _repo = new CourseRepository(DbContext.Create());
+        ICourseRepository _repo;
+
+        public LecturesController (ICourseRepository courseRepository)
+        {
+            _repo = courseRepository;
+        }
 
         [HttpGet("api/lectures/{id}", Name=RouteNames.Lectures )]
         public IActionResult GetLectures(string id)

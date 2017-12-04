@@ -10,7 +10,7 @@ namespace YaleRss.Test
         [Test]
         public void TestConnection()
         {
-            var repo = new CourseRepository(DbContext.Create());
+            var repo = new CourseRepository(new DbContext());
             var p = repo.Philosophy.Lectures;
             Assert.Greater(p.Count(), 0);
         }

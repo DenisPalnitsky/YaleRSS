@@ -17,9 +17,14 @@ namespace YaleRss.Controllers
     public class RssController : Controller
     {
 
-        CourseRepository _repo = new CourseRepository(DbContext.Create());
+        ICourseRepository _repo;
 
         readonly DateTime _startDate = new DateTime(2011, 1, 18);
+
+        public RssController (ICourseRepository courseRepository)
+        {
+            _repo = courseRepository;
+        }
 
         [HttpGet]
         public IActionResult Get()

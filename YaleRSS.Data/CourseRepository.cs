@@ -2,48 +2,36 @@
 using System.Collections.Generic;
 using System.Linq;
 
-
 namespace YaleRss.Data
 {
-
-
-    public class CourseRepository
+    public class CourseRepository : ICourseRepository
     {
-        DbContext _context;
+        IDbContext _context;
 
-        public CourseRepository(DbContext context)
+        public CourseRepository(IDbContext context)
         {
             _context = context;
         }
 
         public List<CourseEntity> GetAllCourses()
         {
-            return _context.Cources.Find(_ => true).ToList();
+            return _context.Cources.ToList();
         }
 
         public CourseEntity GetCourse(string courseId)
         {           
             var filter = Builders<CourseEntity>.Filter.Eq(c => c.CourseId, courseId);
-            return _context.Cources
-                                .Find(filter).Single();           
+            return _context.Cources.First(c=>c.CourseId == courseId );           
         }
 
         public CourseEntity Philosophy
         {
-             get {
-                var filter = Builders<CourseEntity>.Filter.Eq(c=> c.CourseId, "phil181");
-                return _context.Cources
-                                    .Find(filter).Single();
-                }
+            get
+            {
+                return _context.Cources.Single(c => c.CourseId == "phil181");
+            }
         }
 
-        public CourseEntity GetEntity(string id)
-        {
-            var filter = Builders<CourseEntity>.Filter.Eq("Id", id);
-            return _context.Cources
-                                .Find( filter )
-                                 .FirstOrDefault();
-        }
     }
  
 }
