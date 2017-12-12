@@ -2,7 +2,7 @@
 {
     internal class RouteNames
     {
-        public const string UserProfile = "UserProfile";
+        public const string Courses = "Courses";
         public const string Lectures = "Lectures";
     }
 }

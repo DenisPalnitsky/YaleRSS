@@ -11,9 +11,7 @@ using System.Xml;
 using YaleRss.Data;
 
 namespace YaleRss.Controllers
-{
-
-    [Route("api/[controller]", Name = RouteNames.UserProfile)]
+{   
     public class RssController : Controller
     {
 
@@ -26,11 +24,18 @@ namespace YaleRss.Controllers
             _repo = courseRepository;
         }
 
-        [HttpGet]
+        [HttpGet("rss/list")]
         public IActionResult Get()
+        {
+            var result = _repo.GetAllCourses().Select(c => new { Name = c.Name, CourseId = c.CourseId });
+            return new JsonResult(result);
+        }
+
+        [HttpGet("rss/{id}", Name = RouteNames.Courses)]
+        public IActionResult Get(string id)
         {                       
             List<SyndicationItem> items = new List<SyndicationItem>();
-            var course = _repo.Philosophy;
+            var course = _repo.GetCourse(id.ToLower());
            
             foreach (var lecture in course.Lectures)
             {
