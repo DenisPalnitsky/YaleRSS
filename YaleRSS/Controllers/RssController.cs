@@ -27,7 +27,12 @@ namespace YaleRss.Controllers
         [HttpGet("rss/list")]
         public IActionResult Get()
         {
-            var result = _repo.GetAllCourses().Select(c => new { Name = c.Name, CourseId = c.CourseId });
+            var result = _repo.GetAllCourses().Select(c => new
+            {
+                Name = c.Name,
+                Link = this.Url.Link(RouteNames.Courses, new { Controller = "RssController", id = c.CourseId })
+            });
+
             return new JsonResult(result);
         }
 

@@ -1,0 +1,59 @@
+DepartmentLink;Department;CourseLink;CourseIdReadeble;Name;Professor Name;Date;CourseId;DateId;AudioUrlPattern;IsAvailable
+/african-american-studies;African American Studies;/african-american-studies/afam-162;AFAM 162;African American History: From Emancipation to the Present;Jonathan Holloway          ;Spring 2010          ;afam162;spring10;/courses/spring10/afam162/mp3/{0}.mp3;FALSE
+/american-studies;American Studies;/american-studies/amst-246;AMST 246;Hemingway, Fitzgerald, Faulkner;Wai Chee Dimock          ;Fall 2011          ;amst246;fall11;/courses/fall11/amst246/mp3/{0}.mp3;FALSE
+/astronomy;Astronomy;/astronomy/astr-160;ASTR 160;Frontiers and Controversies in Astrophysics;Charles Bailyn          ;Spring 2007          ;astr160;spring07;/courses/spring07/astr160/mp3/{0}.mp3;FALSE
+/biomedical-engineering;Biomedical Engineering;/biomedical-engineering/beng-100;BENG 100;Frontiers of Biomedical Engineering;W. Mark Saltzman          ;Spring 2008          ;beng100;spring08;/courses/spring08/beng100/mp3/{0}.mp3;FALSE
+/chemistry;Chemistry;/chemistry/chem-125a;CHEM 125a;Freshman Organic Chemistry I;J. Michael McBride          ;Fall 2008          ;chem125a;fall08;/courses/fall08/chem125a/mp3/{0}.mp3;FALSE
+/chemistry;Chemistry;/chemistry/chem-125b;CHEM 125b;Freshman Organic Chemistry II;J. Michael McBride          ;Spring 2011          ;chem125b;spring11;/courses/spring11/chem125b/mp3/{0}.mp3;FALSE
+/classics;Classics;/classics/clcv-205;CLCV 205;Introduction to Ancient Greek History;Donald Kagan          ;Fall 2007          ;clcv205;fall07;/courses/fall07/clcv205/mp3/{0}.mp3;FALSE
+/ecology-and-evolutionary-biology;Ecology and Evolutionary Biology;/ecology-and-evolutionary-biology/eeb-122;EEB 122;Principles of Evolution, Ecology and Behavior;Stephen C. Stearns          ;Spring 2009          ;eeb122;spring09;/courses/spring09/eeb122/mp3/{0}.mp3;FALSE
+/economics;Economics;/economics/econ-252-08;ECON 252;Financial Markets (2008);Robert J. Shiller          ;Spring 2008          ;econ25208;spring08;/courses/spring08/econ25208/mp3/{0}.mp3;FALSE
+/economics;Economics;/economics/econ-252;ECON 252;Financial Markets (2011);Robert J. Shiller          ;Spring 2011          ;econ252;spring11;/courses/spring11/econ252/mp3/{0}.mp3;FALSE
+/economics;Economics;/economics/econ-251;ECON 251;Financial Theory;John Geanakoplos          ;Fall 2009          ;econ251;fall09;/courses/fall09/econ251/mp3/{0}.mp3;FALSE
+/economics;Economics;/economics/econ-159;ECON 159;Game Theory;Ben Polak          ;Fall 2007          ;econ159;fall07;/courses/fall07/econ159/mp3/{0}.mp3;FALSE
+/english;English;/english/engl-300;ENGL 300;Introduction to Theory of Literature;Paul H. Fry          ;Spring 2009          ;engl300;spring09;/courses/spring09/engl300/mp3/{0}.mp3;FALSE
+/english;English;/english/engl-220;ENGL 220;Milton;John Rogers          ;Fall 2007          ;engl220;fall07;/courses/fall07/engl220/mp3/{0}.mp3;FALSE
+/english;English;/english/engl-310;ENGL 310;Modern Poetry;Langdon Hammer          ;Spring 2007          ;engl310;spring07;/courses/spring07/engl310/mp3/{0}.mp3;FALSE
+/english;English;/english/engl-291;ENGL 291;The American Novel Since 1945;Amy Hungerford          ;Spring 2008          ;engl291;spring08;/courses/spring08/engl291/mp3/{0}.mp3;FALSE
+/environmental-studies;Environmental Studies;/environmental-studies/evst-255;EVST 255;Environmental Politics and Law;John Wargo          ;Spring 2010          ;evst255;spring10;/courses/spring10/evst255/mp3/{0}.mp3;FALSE
+/geology-and-geophysics;Geology and Geophysics;/geology-and-geophysics/gg-140;GG 140;The Atmosphere, the Ocean, and Environmental Change;Ronald B. Smith          ;Fall 2011          ;gg140;fall11;/courses/fall11/gg140/mp3/{0}.mp3;FALSE
+/history;History;/history/hist-116;HIST 116;The American Revolution;Joanne Freeman          ;Spring 2010          ;hist116;spring10;/courses/spring10/hist116/mp3/{0}.mp3;FALSE
+/history;History;/history/hist-119;HIST 119;The Civil War and Reconstruction Era, 1845-1877;David W. Blight          ;Spring 2008          ;hist119;spring08;/courses/spring08/hist119/mp3/{0}.mp3;FALSE
+/history;History;/history/hist-210;HIST 210;The Early Middle Ages, 284–1000;Paul Freedman          ;Fall 2011          ;hist210;fall11;/courses/fall11/hist210/mp3/{0}.mp3;FALSE
+/history;History;/history/hist-202;HIST 202;European Civilization, 1648-1945;John Merriman          ;Fall 2008          ;hist202;fall08;/courses/fall08/hist202/mp3/{0}.mp3;FALSE
+/history;History;/history/hist-234;HIST 234;Epidemics in Western Society Since 1600;Frank Snowden          ;Spring 2010          ;hist234;spring10;/courses/spring10/hist234/mp3/{0}.mp3;FALSE
+/history;History;/history/hist-251;HIST 251;Early Modern England: Politics, Religion, and Society under the Tudors and Stuarts;Keith E. Wrightson          ;Fall 2009          ;hist251;fall09;/courses/fall09/hist251/mp3/{0}.mp3;FALSE
+/history;History;/history/hist-276;HIST 276;France Since 1871;John Merriman          ;Fall 2007          ;hist276;fall07;/courses/fall07/hist276/mp3/{0}.mp3;FALSE
+/history-art;History of Art;/history-of-art/hsar-252;HSAR 252;Roman Architecture;Diana E. E. Kleiner          ;Spring 2009          ;hsar252;spring09;/courses/spring09/hsar252/mp3/{0}.mp3;FALSE
+/italian-language-and-literature;Italian Language and Literature;/italian-language-and-literature/ital-310;ITAL 310;Dante in Translation;Giuseppe Mazzotta          ;Fall 2008          ;ital310;fall08;/courses/fall08/ital310/mp3/{0}.mp3;FALSE
+/molecular-cellular-and-developmental-biology;Molecular, Cellular and Developmental Biology;/molecular-cellular-and-developmental-biology/mcdb-150;MCDB 150;Global Problems of Population Growth;Robert Wyman          ;Spring 2009          ;mcdb150;spring09;/courses/spring09/mcdb150/mp3/{0}.mp3;FALSE
+/philosophy;Philosophy;/philosophy/phil-181;PHIL 181;Philosophy and the Science of Human Nature;Tamar Gendler          ;Spring 2011          ;phil181;spring11;/courses/spring11/phil181/mp3/{0}.mp3;FALSE
+/philosophy;Philosophy;/death/phil-176;PHIL 176;Death;Shelly Kagan          ;Spring 2007          ;phil176;spring07;/courses/spring07/phil176/mp3/{0}.mp3;FALSE
+/physics;Physics;/physics/phys-200;PHYS 200;Fundamentals of Physics I;Ramamurti Shankar          ;Fall 2006          ;phys200;fall06;/courses/fall06/phys200/mp3/{0}.mp3;FALSE
+/physics;Physics;/physics/phys-201;PHYS 201;Fundamentals of Physics II;Ramamurti Shankar          ;Spring 2010          ;phys201;spring10;/courses/spring10/phys201/mp3/{0}.mp3;FALSE
+/political-science;Political Science;/political-science/plsc-270;PLSC 270;Capitalism: Success, Crisis, and Reform;Douglas W. Rae          ;Fall 2009          ;plsc270;fall09;/courses/fall09/plsc270/mp3/{0}.mp3;FALSE
+/political-science;Political Science;/political-science/plsc-114;PLSC 114;Introduction to Political Philosophy;Steven B. Smith          ;Fall 2006          ;plsc114;fall06;/courses/fall06/plsc114/mp3/{0}.mp3;FALSE
+/psychology;Psychology;/introduction-psychology/psyc-110;PSYC 110;Introduction to Psychology;Paul Bloom          ;Spring 2007          ;psyc110;spring07;/courses/spring07/psyc110/mp3/{0}.mp3;FALSE
+/psychology;Psychology;/psychology/psyc-123;PSYC 123;The Psychology, Biology and Politics of Food;Kelly D. Brownell          ;Fall 2008          ;psyc123;fall08;/courses/fall08/psyc123/mp3/{0}.mp3;FALSE
+/religious-studies;Religious Studies;/religious-studies/rlst-152;RLST 152;Introduction to the New Testament History and Literature;Dale B. Martin          ;Spring 2009          ;rlst152;spring09;/courses/spring09/rlst152/mp3/{0}.mp3;FALSE
+/religious-studies;Religious Studies;/religious-studies/rlst-145;RLST 145;Introduction to the Old Testament (Hebrew Bible);Christine Hayes          ;Fall 2006          ;rlst145;fall06;/courses/fall06/rlst145/mp3/{0}.mp3;FALSE
+/sociology;Sociology;/sociology/socy-151;SOCY 151;Foundations of Modern Social Theory;Iván Szelényi          ;Fall 2009          ;socy151;fall09;/courses/fall09/socy151/mp3/{0}.mp3;FALSE
+/spanish-and-portuguese;Spanish and Portuguese;/spanish-and-portuguese/span-300;SPAN 300;"Cervantes&#039; Don Quixote";Roberto González Echevarría          ;Fall 2009          ;span300;fall09;/courses/fall09/span300/mp3/{0}.mp3;FALSE
+;;;;;;;;;;
+;;;;;;;;;;
+;;;;;;;;;;
+;;;;;;;;;;
+;;;;;;;;;;
+;;;;;;;;;;
+;;;;;;;;;;
+;;;;;;;;;;
+;;;;;;;;;;
+;;;;;;;;;;
+;;;;;;;;;;
+;;;;;;;;;;
+;;;;;;;;;;
+;;;;;;;;;;
+;;;;;;;;;;
+;;;;;;;;;;
+;;;;;;;;;;
+;;;;;;;;;           ;
