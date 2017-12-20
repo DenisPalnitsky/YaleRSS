@@ -26,7 +26,7 @@ namespace YaleRss.Controllers
             var course = _repo.Philosophy;
             var lecture = course.Lectures.Single(l => l.LectureId.Equals(id, StringComparison.CurrentCultureIgnoreCase));
 
-            var yaleResponse = YaleRSS.Data.WebData.YaleSiteRequest.GetFile(String.Format(course.AudioUrlPattern, lecture.LectureId));
+            var yaleResponse = YaleRSS.Data.WebData.YaleSiteRequest.GetFile(String.Format(course.AlternativeAudioUrlPattern, lecture.LectureId));
            
             if (yaleResponse.StatusCode == HttpStatusCode.OK)
             {
@@ -35,7 +35,7 @@ namespace YaleRss.Controllers
             else
             {
                 Trace.WriteLine("Attempt to get stream from Yale failed. Sourcing from storage");
-                yaleResponse = YaleRSS.Data.WebData.YaleSiteRequest.GetFile(String.Format(course.AlternativeAudioUrlPattern, lecture.LectureId));
+                yaleResponse = YaleRSS.Data.WebData.YaleSiteRequest.GetFile(String.Format(course.AudioUrlPattern, lecture.LectureId));
             }
 
             if (yaleResponse.ContentLength> 0)

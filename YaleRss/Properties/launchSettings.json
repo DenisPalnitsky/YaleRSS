@@ -11,7 +11,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/rss",
+      "launchUrl": "rss/list",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
