@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace YaleRss.Data
 {
+    [BsonIgnoreExtraElements]
     public class CourseEntity
     {
         [BsonRepresentation(BsonType.ObjectId)]
