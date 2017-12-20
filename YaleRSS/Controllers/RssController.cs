@@ -33,7 +33,7 @@ namespace YaleRss.Controllers
                 Link = this.Url.Link(RouteNames.Courses, new { Controller = "RssController", id = c.CourseId })
             });
 
-            return new JsonResult(result);
+            return new JsonResult(result, new Newtonsoft.Json.JsonSerializerSettings() { Formatting = Newtonsoft.Json.Formatting.Indented });
         }
 
         [HttpGet("rss/{id}", Name = RouteNames.Courses)]
