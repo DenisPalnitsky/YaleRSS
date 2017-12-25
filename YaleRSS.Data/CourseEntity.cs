@@ -11,8 +11,8 @@ namespace YaleRss.Data
         public string Id { get; set; }
         public string CourseId { get; set; }
         public string Name { get; set; }
-        public string AudioUrlPattern { get; set; }
-        public string AlternativeAudioUrlPattern { get; set; }
+        public string YaleUrlPattern { get; set; }
+        public string InternalUrlPattern { get; set; }
         public IEnumerable<LectureEntity> Lectures { get; set; }
     }
 }
