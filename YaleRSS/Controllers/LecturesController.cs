@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using YaleRss.Data;
+using YaleRSS.Data.WebData;
 
 namespace YaleRss.Controllers
 {
@@ -19,25 +20,22 @@ namespace YaleRss.Controllers
             _repo = courseRepository;
         }
 
-        [HttpGet("api/lectures/{id}", Name=RouteNames.Lectures )]
+        [HttpGet("api/lectures/{id}.mp3", Name=RouteNames.Lectures )]
         public IActionResult GetLectures(string id)
         {            
             Trace.WriteLine($"Downloading lecture { id }");
             var course = _repo.Philosophy;
             var lecture = course.Lectures.Single(l => l.LectureId.Equals(id, StringComparison.CurrentCultureIgnoreCase));
 
-            var yaleResponse = YaleRSS.Data.WebData.YaleSiteRequest.GetFile(String.Format(course.AlternativeAudioUrlPattern, lecture.LectureId));
-           
-            if (yaleResponse.StatusCode == HttpStatusCode.OK)
+            if (!String.IsNullOrEmpty(course.InternalUrlPattern))
             {
-                Trace.WriteLine("Attempt to get stream from Yale succeeded");                  
+                Trace.WriteLine("Redirecting to Azure storage");
+                return RedirectPreserveMethod(String.Format(course.InternalUrlPattern, lecture.LectureId));
             }
-            else
-            {
-                Trace.WriteLine("Attempt to get stream from Yale failed. Sourcing from storage");
-                yaleResponse = YaleRSS.Data.WebData.YaleSiteRequest.GetFile(String.Format(course.AudioUrlPattern, lecture.LectureId));
-            }
-
+        
+            Trace.WriteLine("Attempt to get stream from Yale failed. Sourcing from storage");
+            var yaleResponse = YaleSiteRequest.GetFile(String.Format(course.YaleUrlPattern, lecture.LectureId));
+       
             if (yaleResponse.ContentLength> 0)
                 Response.Headers.ContentLength = yaleResponse.ContentLength;
 
@@ -45,7 +43,6 @@ namespace YaleRss.Controllers
                  yaleResponse.ContentType);
 
             Trace.WriteLine("Setting headers");
-
                                 
             response.FileDownloadName = lecture.LectureId + ".mp3";
           
