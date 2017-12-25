@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.SyndicationFeed;
 using Microsoft.SyndicationFeed.Rss;
 using System;
@@ -14,7 +16,6 @@ namespace YaleRss.Controllers
 {   
     public class RssController : Controller
     {
-
         ICourseRepository _repo;
 
         readonly DateTime _startDate = new DateTime(2011, 1, 18);
@@ -36,13 +37,20 @@ namespace YaleRss.Controllers
             return new JsonResult(result, new Newtonsoft.Json.JsonSerializerSettings() { Formatting = Newtonsoft.Json.Formatting.Indented });
         }
 
+
+    
+
         [HttpGet("rss/{id}", Name = RouteNames.Courses)]
         public IActionResult Get(string id)
         {                       
             List<SyndicationItem> items = new List<SyndicationItem>();
             var course = _repo.GetCourse(id.ToLower());
-           
-            foreach (var lecture in course.Lectures)
+            var lectures = course.Lectures;
+
+            if (lectures == null)
+                lectures = new List<LectureEntity>();
+
+            foreach (var lecture in lectures)
             {
                 SyndicationItem item = new SyndicationItem()
                 {
@@ -73,7 +81,14 @@ namespace YaleRss.Controllers
                     feedWriter.WriteDescription("Lectures from Open Yale Courses http://oyc.yale.edu/ ");
                     feedWriter.WriteTitle("Yale Open lectures");
                     feedWriter.WriteLastBuildDate(DateTime.Now);
-                    
+
+                    var sendycationImage = new SyndicationImage(this.Url.AbsoluteContent(@"~/images/square_logo_large.jpg")) { Title = "YaleLogo" ,
+                    Link = new SyndicationLink( this.Url.AbsoluteContent(@"~/images/square_logo_large.jpg"))                    };
+
+
+                    feedWriter.Write(sendycationImage);
+
+
                     feedWriter.WriteLanguage(CultureInfo.GetCultureInfo("en-us"));
 
                     foreach (var item in items) {
@@ -104,7 +119,7 @@ namespace YaleRss.Controllers
 
         private Uri GetAudioUri(LectureEntity lecture)
         {
-            var url = this.Url.Link(RouteNames.Lectures, new { Controller = "Lectures", id = lecture.LectureId });
+            var url = this.Url.Link(RouteNames.Lectures, new { Controller = nameof(LecturesController), id = lecture.LectureId });
             return new Uri(url);           
         }
     }
