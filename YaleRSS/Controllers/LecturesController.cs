@@ -20,7 +20,7 @@ namespace YaleRss.Controllers
             _repo = courseRepository;
         }
 
-        [HttpGet("api/lectures/{id}.mp3", Name=RouteNames.Lectures )]
+        [HttpGet("rss/lectures/{id}.mp3", Name=RouteNames.Lectures )]
         public IActionResult GetLectures(string id)
         {            
             Trace.WriteLine($"Downloading lecture { id }");
