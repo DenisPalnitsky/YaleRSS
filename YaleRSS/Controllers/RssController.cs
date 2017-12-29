@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.SyndicationFeed;
 using Microsoft.SyndicationFeed.Rss;
 using System;
@@ -13,7 +11,7 @@ using System.Xml;
 using YaleRss.Data;
 
 namespace YaleRss.Controllers
-{   
+{
     public class RssController : Controller
     {
         ICourseRepository _repo;
@@ -30,14 +28,15 @@ namespace YaleRss.Controllers
         {
             var result = _repo.GetAllCourses().Select(c => new
             {
-                Name = c.Name,
-                Link = this.Url.Link(RouteNames.Courses, new { Controller = "RssController", id = c.CourseId })
+                c.Name,
+                CourseLink = "https://oyc.yale.edu/" + c.CourseLink,
+                c.Department,
+                Link = this.Url.Link(RouteNames.Courses, new { Controller = "RssController", id = c.CourseId }),
+                IsAvailable = c.Lectures.Count() != 0 
             });
 
-            return new JsonResult(result, new Newtonsoft.Json.JsonSerializerSettings() { Formatting = Newtonsoft.Json.Formatting.Indented });
+            return new JsonResult(result.OrderByDescending(c=>c.IsAvailable), new Newtonsoft.Json.JsonSerializerSettings() { Formatting = Newtonsoft.Json.Formatting.Indented });
         }
-
-
     
 
         [HttpGet("rss/{id}", Name = RouteNames.Courses)]

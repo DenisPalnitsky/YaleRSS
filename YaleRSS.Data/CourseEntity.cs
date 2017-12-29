@@ -13,6 +13,9 @@ namespace YaleRss.Data
         public string Name { get; set; }
         public string YaleUrlPattern { get; set; }
         public string InternalUrlPattern { get; set; }
-        public IEnumerable<LectureEntity> Lectures { get; set; }
+        public string DepartmentLink { get; set; }
+        public string Department { get; set; } 
+        public string CourseLink { get; set; }
+        public IEnumerable<LectureEntity> Lectures { get; set; } = new List<LectureEntity>();
     }
 }
