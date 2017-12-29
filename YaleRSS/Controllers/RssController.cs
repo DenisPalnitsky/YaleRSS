@@ -76,9 +76,8 @@ namespace YaleRss.Controllers
                 using (var xmlWriter = XmlWriter.Create(ms, xws))
                 {
                     RssFeedWriter feedWriter = new RssFeedWriter(xmlWriter);
-                    feedWriter.WriteDescription("Lectures from Open Yale Courses http://oyc.yale.edu/ ");
-                    feedWriter.WriteCopyright("Most of the lectures and course material within Open Yale Courses are licensed under a Creative Commons Attribution-Noncommercial-Share Alike 3.0 license. ");
-                    feedWriter.WriteDescription("Lectures from Open Yale Courses http://oyc.yale.edu/ ");
+                    feedWriter.WriteDescription("Lectures from Open Yale Courses. More info on http://oyc.yale.edu/ ");
+                    feedWriter.WriteCopyright("Most of the lectures and course material within Open Yale Courses are licensed under a Creative Commons Attribution-Noncommercial-Share Alike 3.0 license. ");                    
                     feedWriter.WriteTitle("Yale Open lectures");
                     feedWriter.WriteLastBuildDate(DateTime.Now);
 
