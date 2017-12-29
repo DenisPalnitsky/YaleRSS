@@ -78,7 +78,7 @@ namespace YaleRss.Controllers
                     RssFeedWriter feedWriter = new RssFeedWriter(xmlWriter);
                     feedWriter.WriteDescription("Lectures from Open Yale Courses. More info on http://oyc.yale.edu/ ");
                     feedWriter.WriteCopyright("Most of the lectures and course material within Open Yale Courses are licensed under a Creative Commons Attribution-Noncommercial-Share Alike 3.0 license. ");                    
-                    feedWriter.WriteTitle("Yale Open lectures");
+                    feedWriter.WriteTitle($"Yale Open lectures. {course.Name}");
                     feedWriter.WriteLastBuildDate(DateTime.Now);
 
                     var sendycationImage = new SyndicationImage(this.Url.AbsoluteContent(@"~/images/square_logo_large.jpg")) { Title = "YaleLogo" ,
