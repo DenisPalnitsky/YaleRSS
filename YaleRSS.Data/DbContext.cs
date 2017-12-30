@@ -14,10 +14,12 @@ namespace YaleRss.Data
         }
 
         // This property may require to return IMongoCollection if IQueryable will misbehave
-        public IQueryable<CourseEntity> Cources
+        public IQueryable<CourseEntity> Courses
         {            
             get { return _database.GetCollection<CourseEntity>("courses").AsQueryable(); }
         }
+
+        
       
     }
 }

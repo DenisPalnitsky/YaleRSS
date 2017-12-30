@@ -15,22 +15,14 @@ namespace YaleRss.Data
 
         public List<CourseEntity> GetAllCourses()
         {
-            return _context.Cources.ToList();
+            return _context.Courses.ToList();
         }
 
         public CourseEntity GetCourse(string courseId)
         {           
             var filter = Builders<CourseEntity>.Filter.Eq(c => c.CourseId, courseId);
-            return _context.Cources.First(c=>c.CourseId == courseId );           
-        }
-
-        public CourseEntity Philosophy
-        {
-            get
-            {
-                return _context.Cources.Single(c => c.CourseId == "phil181");
-            }
-        }
+            return _context.Courses.First(c=>c.CourseId == courseId );           
+        }       
 
     }
  

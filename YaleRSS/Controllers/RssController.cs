@@ -37,6 +37,7 @@ namespace YaleRss.Controllers
                 c.YaleUrlPattern,
                 c.InternalUrlPattern,
                 Link = this.Url.Link(RouteNames.Courses, new { Controller = "RssController", id = c.CourseId }),
+                NubmerOfLectures = c.Lectures.Count(),
                 IsAvailable = c.Lectures.Count() != 0 
             });
 

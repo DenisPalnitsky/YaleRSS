@@ -1,9 +1,10 @@
-﻿using System.Linq;
+﻿using MongoDB.Driver;
+using System.Linq;
 
 namespace YaleRss.Data
 {
     public interface IDbContext
     {
-        IQueryable<CourseEntity> Cources { get; }
+        IQueryable<CourseEntity> Courses { get; }       
     }
 }
