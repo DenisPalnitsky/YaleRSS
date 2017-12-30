@@ -31,6 +31,11 @@ namespace YaleRss.Controllers
                 c.Name,
                 CourseLink = "https://oyc.yale.edu/" + c.CourseLink,
                 c.Department,
+                c.DepartmentLink,
+                c.CourseId,
+                c.CourseIdReadeble,
+                c.YaleUrlPattern,
+                c.InternalUrlPattern,
                 Link = this.Url.Link(RouteNames.Courses, new { Controller = "RssController", id = c.CourseId }),
                 IsAvailable = c.Lectures.Count() != 0 
             });
@@ -59,7 +64,7 @@ namespace YaleRss.Controllers
                     Description = lecture.Overview,
                 };
 
-                item.AddLink ( new SyndicationLink(GetAudioUri(lecture)) { MediaType = "audio/mpeg" } );
+                item.AddLink ( new SyndicationLink(GetAudioUri(course.CourseId, lecture)) { MediaType = "audio/mpeg" } );
                 item.AddCategory(new SyndicationCategory("Education"));
                 item.LastUpdated = lecture.DateOfLecture;
           
@@ -115,9 +120,9 @@ namespace YaleRss.Controllers
             }   
         }
 
-        private Uri GetAudioUri(LectureEntity lecture)
+        private Uri GetAudioUri(string courseId, LectureEntity lecture)
         {
-            var url = this.Url.Link(RouteNames.Lectures, new { Controller = nameof(LecturesController), id = lecture.LectureId });
+            var url = this.Url.Link(RouteNames.Lectures, new { Controller = nameof(LecturesController), courseId, id = lecture.LectureId });
             return new Uri(url);           
         }
     }

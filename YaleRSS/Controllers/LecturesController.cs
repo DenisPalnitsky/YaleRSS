@@ -20,11 +20,12 @@ namespace YaleRss.Controllers
             _repo = courseRepository;
         }
 
-        [HttpGet("rss/lectures/{id}.mp3", Name=RouteNames.Lectures )]
-        public IActionResult GetLectures(string id)
+        [HttpGet("rss/lectures/{courseId}/{id}.mp3", Name=RouteNames.Lectures )]
+        public IActionResult GetLectures(string courseId, string id)
         {            
             Trace.WriteLine($"Downloading lecture { id }");
-            var course = _repo.Philosophy;
+            var course = _repo.GetCourse(courseId);
+
             var lecture = course.Lectures.Single(l => l.LectureId.Equals(id, StringComparison.CurrentCultureIgnoreCase));
 
             if (!String.IsNullOrEmpty(course.InternalUrlPattern))
