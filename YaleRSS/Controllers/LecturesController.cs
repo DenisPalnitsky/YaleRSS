@@ -13,18 +13,20 @@ namespace YaleRss.Controllers
     //[Route("api/[controller]", Name = RouteNames.UserProfile)]
     public class LecturesController : Controller
     {
-        ICourseRepository _repo;
+        ICourseRepository _coursesRepository;
+        IConfigurationRepository _configurationRepository;
 
-        public LecturesController (ICourseRepository courseRepository)
+        public LecturesController (ICourseRepository courseRepository, IConfigurationRepository configurationRepository)
         {
-            _repo = courseRepository;
+            _coursesRepository = courseRepository;
+            _configurationRepository = configurationRepository;
         }
 
         [HttpGet("rss/lectures/{courseId}/{id}.mp3", Name=RouteNames.Lectures )]
         public IActionResult GetLectures(string courseId, string id)
         {            
             Trace.WriteLine($"Downloading lecture { id }");
-            var course = _repo.GetCourse(courseId);
+            var course = _coursesRepository.GetCourse(courseId);
 
             var lecture = course.Lectures.Single(l => l.LectureId.Equals(id, StringComparison.CurrentCultureIgnoreCase));
 
@@ -34,8 +36,8 @@ namespace YaleRss.Controllers
                 return RedirectPreserveMethod(String.Format(course.InternalUrlPattern, lecture.LectureId));
             }
         
-            Trace.WriteLine("Attempt to get stream from Yale failed. Sourcing from storage");
-            var yaleResponse = YaleSiteRequest.GetFile(String.Format(course.YaleUrlPattern, lecture.LectureId));
+            Trace.WriteLine("There is no media file in Azure storage. Pulling file from Yale");
+            var yaleResponse = YaleSiteRequest.GetFile(String.Format(_configurationRepository.GetConfiguration().YaleUrlBase + course.YaleUrlPattern, lecture.LectureId));
        
             if (yaleResponse.ContentLength> 0)
                 Response.Headers.ContentLength = yaleResponse.ContentLength;

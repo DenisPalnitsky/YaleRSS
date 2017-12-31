@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using YaleRss.Data;
+using YaleRss.Data.Entities;
 using YaleRss.Data.WebData;
 
 namespace YaleRss.LecturesDataExtractor

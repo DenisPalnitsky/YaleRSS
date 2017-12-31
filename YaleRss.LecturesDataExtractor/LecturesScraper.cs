@@ -4,6 +4,7 @@ using System.Text;
 using YaleRss.Data;
 using System.Linq;
 using MongoDB.Driver;
+using YaleRss.Data.Entities;
 
 namespace YaleRss.LecturesDataExtractor
 {

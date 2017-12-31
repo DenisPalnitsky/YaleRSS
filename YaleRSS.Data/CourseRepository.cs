@@ -1,27 +1,27 @@
 ﻿using MongoDB.Driver;
 using System.Collections.Generic;
 using System.Linq;
+using YaleRss.Data.Entities;
 
 namespace YaleRss.Data
 {
-    public class CourseRepository : ICourseRepository
+    public class CourseRepository : RepositoryBase, ICourseRepository
     {
-        IDbContext _context;
+        const string COURSES_COLLECION_NAME = "courses";
 
-        public CourseRepository(IDbContext context)
+        public CourseRepository(IDbContext context) : base(context)
         {
-            _context = context;
         }
 
         public List<CourseEntity> GetAllCourses()
         {
-            return _context.Courses.ToList();
+            return Context.GetCollection<CourseEntity>(COURSES_COLLECION_NAME).Find(_ => true).ToList();
         }
 
         public CourseEntity GetCourse(string courseId)
         {           
             var filter = Builders<CourseEntity>.Filter.Eq(c => c.CourseId, courseId);
-            return _context.Courses.First(c=>c.CourseId == courseId );           
+            return Context.GetCollection<CourseEntity>(COURSES_COLLECION_NAME).Find(c=>c.CourseId == courseId ).Single();           
         }       
 
     }

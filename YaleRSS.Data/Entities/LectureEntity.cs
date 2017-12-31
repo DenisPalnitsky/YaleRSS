@@ -1,7 +1,7 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using System;
 
-namespace YaleRss.Data
+namespace YaleRss.Data.Entities
 {
     public class LectureEntity
     {

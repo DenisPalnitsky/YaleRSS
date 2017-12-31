@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using System;
 using YaleRss.Data;
+using YaleRss.Data.Entities;
 
 namespace YaleRss.Test
 {

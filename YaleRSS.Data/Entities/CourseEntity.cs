@@ -2,7 +2,7 @@
 using MongoDB.Bson.Serialization.Attributes;
 using System.Collections.Generic;
 
-namespace YaleRss.Data
+namespace YaleRss.Data.Entities
 {
     [BsonIgnoreExtraElements]
     public class CourseEntity

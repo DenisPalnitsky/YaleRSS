@@ -1,5 +1,6 @@
 ﻿using MongoDB.Driver;
 using System.Linq;
+using YaleRss.Data.Entities;
 
 namespace YaleRss.Data
 {
@@ -14,12 +15,12 @@ namespace YaleRss.Data
         }
 
         // This property may require to return IMongoCollection if IQueryable will misbehave
-        public IQueryable<CourseEntity> Courses
+        public IMongoCollection<T> GetCollection<T>(string collection)
         {            
-            get { return _database.GetCollection<CourseEntity>("courses").AsQueryable(); }
+            return _database.GetCollection<T>(collection); 
         }
-
         
       
+
     }
 }
