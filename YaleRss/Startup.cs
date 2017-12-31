@@ -27,6 +27,7 @@ namespace YaleRss
             services.AddMvc();
             services.AddTransient<IDbContext, DbContext>();
             services.AddTransient<ICourseRepository, CourseRepository>();
+            services.AddTransient<IConfigurationRepository , ConfigurationRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using YaleRss.Data.Entities;
 
 namespace YaleRss.Data
 {
@@ -6,8 +7,5 @@ namespace YaleRss.Data
     {
         List<CourseEntity> GetAllCourses();
         CourseEntity GetCourse(string courseId);
-
-
-        
     }
 }

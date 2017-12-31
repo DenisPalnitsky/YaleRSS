@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using YaleRss.Data;
+using YaleRss.Data.Entities;
 
 namespace YaleRss.Controllers
 {

@@ -1,10 +1,11 @@
 ﻿using MongoDB.Driver;
 using System.Linq;
+using YaleRss.Data.Entities;
 
 namespace YaleRss.Data
 {
     public interface IDbContext
     {
-        IQueryable<CourseEntity> Courses { get; }       
+        IMongoCollection<T> GetCollection<T>(string collection);
     }
 }
