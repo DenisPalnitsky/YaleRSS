@@ -76,7 +76,7 @@
         app.controller('myCtrl', function ($scope, $http) {
             $http.get("rss/list")
                 .then(function (response) {
-                    $scope.rssList = response.data;
+                    $scope.rssList = response.data.filter(x => x.IsAvailable === true);
                 });
         });
     </script>
