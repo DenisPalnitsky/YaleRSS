@@ -5,6 +5,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112694231-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-112694231-1');
+</script>
+<!-- End Google Analytics -->
 
     <title>Rss List</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
@@ -54,8 +64,11 @@
 
             </tr>
         </table>
-
-        
+        <br />
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <div class="addthis_inline_share_toolbox"></div>
+              
+        <br />
         <div class="alert alert-warning" role="alert">         
             <p class="text-center">
                 All content is from <a href="https://oyc.yale.edu/">https://oyc.yale.edu/</a> 
@@ -68,7 +81,9 @@
             <p class="text-center">    This is open source project published on <a href="https://github.com/DenisPalnitsky/YaleRSS">Git Hub</a> </p>
         </div>       
     </div>
-
+      
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5a5fb20747ce3dca"></script>
 
     <script>
         var app = angular.module('myApp', []);
