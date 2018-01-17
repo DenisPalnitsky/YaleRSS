@@ -38,7 +38,8 @@ namespace YaleRss
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseStaticFiles();
+            app.UseDefaultFiles();
+            app.UseStaticFiles();            
             app.UseMvc();
         }
     }
