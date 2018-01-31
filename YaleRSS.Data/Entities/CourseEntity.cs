@@ -18,5 +18,6 @@ namespace YaleRss.Data.Entities
         public string Department { get; set; } 
         public string CourseLink { get; set; }
         public List<LectureEntity> Lectures { get; set; } = new List<LectureEntity>();
+        public bool IsRecommended { get; set; }
     }
 }

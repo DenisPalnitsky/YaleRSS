@@ -48,8 +48,8 @@
 
                 </tr>
             </thead>
-            <tr ng-repeat="x in rssList">
-                <td>
+            <tr ng-repeat="x in rssList |  orderBy:['-IsRecommended', 'Name']" ng-class="(x.IsRecommended == true)? 'table-success' : ''">
+                <td >
                     <a href="{{ x.CourseLink }}"> {{ x.Name }}</a>
                 </td>
 

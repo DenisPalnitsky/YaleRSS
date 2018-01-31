@@ -39,7 +39,8 @@ namespace YaleRss.Controllers
                 c.InternalUrlPattern,
                 Link = this.Url.Link(RouteNames.Courses, new { Controller = "RssController", id = c.CourseId }),
                 NubmerOfLectures = c.Lectures.Count(),
-                IsAvailable = c.Lectures.Count() != 0 
+                IsAvailable = c.Lectures.Count() != 0,
+                c.IsRecommended
             });
 
             return new JsonResult(result.OrderByDescending(c=>c.IsAvailable), new Newtonsoft.Json.JsonSerializerSettings() { Formatting = Newtonsoft.Json.Formatting.Indented });

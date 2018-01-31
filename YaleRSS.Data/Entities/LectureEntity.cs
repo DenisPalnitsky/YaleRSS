@@ -9,7 +9,7 @@ namespace YaleRss.Data.Entities
         public string Name { get; set; }
         public string LectureId { get; set; }
         public string LectureNumber { get; set; }
-        public string Overview { get; set; }
+        public string Overview { get; set; }        
 
         [BsonIgnore]
         public DateTime DateOfLecture
