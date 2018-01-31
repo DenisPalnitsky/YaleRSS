@@ -30,9 +30,13 @@
     <div ng-app="myApp" ng-controller="myCtrl" class="container">
         <h1>Yale Open Lectures in Rss Format</h1>
 
-        <table class="table table-striped">
+        
+        <table class="table table-striped" >
             <thead class="thead-dark">
                 <tr>
+                    <th scope="col">
+                        Department
+                    </th>
 
                     <th scope="col">
                         Name
@@ -49,6 +53,11 @@
                 </tr>
             </thead>
             <tr ng-repeat="x in rssList |  orderBy:['-IsRecommended', 'Name']" ng-class="(x.IsRecommended == true)? 'table-success' : ''">
+                
+                <td class="font-weight-light">
+                    {{ x.Department }}
+                </td>
+
                 <td >
                     <a href="{{ x.CourseLink }}"> {{ x.Name }}</a>
                 </td>
