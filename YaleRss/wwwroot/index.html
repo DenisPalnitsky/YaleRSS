@@ -49,10 +49,12 @@
 
                 </tr>
             </thead>
+
+            <tr ng-hide="isLoaded">
+                <td colspan="4" class="text-center">Loading data</td>
+            </tr>
             <tr ng-repeat="x in rssList |  orderBy:['-IsRecommended', 'Name']" ng-class="(x.IsRecommended == true)? 'table-success' : ''">
                 
-                
-
                 <td >
                     <a href="{{ x.CourseLink }}"> {{ x.Name }}</a> <br />
                     <span class="text-muted"><small> {{ x.Department }}</small></span>
@@ -104,7 +106,9 @@
         app.controller('myCtrl', function ($scope, $http) {
             $http.get("rss/list")
                 .then(function (response) {
+                   
                     $scope.rssList = response.data.filter(x => x.IsAvailable === true);
+                    $scope.isLoaded = true;
                 });
         });
     </script>
