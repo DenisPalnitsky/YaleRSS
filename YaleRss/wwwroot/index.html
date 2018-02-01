@@ -34,32 +34,29 @@
         <table class="table table-striped" >
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">
-                        Department
-                    </th>
-
-                    <th scope="col">
+                  
+                    <th scope="col" >
                         Name
                     </th>
 
-                    <th scope="col">
+                    <th scope="col" >
                         Rss
                     </th>
-
-                    <th scope="col" class="text-right">
-                        Number of lectures
+                    
+                    <th scope="col" >
+                        Lectures
                     </th>
 
                 </tr>
             </thead>
             <tr ng-repeat="x in rssList |  orderBy:['-IsRecommended', 'Name']" ng-class="(x.IsRecommended == true)? 'table-success' : ''">
                 
-                <td class="font-weight-light">
-                    {{ x.Department }}
-                </td>
+                
 
                 <td >
-                    <a href="{{ x.CourseLink }}"> {{ x.Name }}</a>
+                    <a href="{{ x.CourseLink }}"> {{ x.Name }}</a> <br />
+                    <span class="text-muted"><small> {{ x.Department }}</small></span>
+                    
                 </td>
 
                 <td>
