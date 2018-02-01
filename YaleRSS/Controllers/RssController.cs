@@ -116,7 +116,7 @@ namespace YaleRss.Controllers
                 {
                     Content = Encoding.UTF8.GetString(ms.ToArray()),
                     StatusCode = Microsoft.AspNetCore.Http.StatusCodes.Status200OK,
-                    ContentType = "application/rss+xml"
+                    ContentType = "text/xml"
                 };
 
                 return response;
