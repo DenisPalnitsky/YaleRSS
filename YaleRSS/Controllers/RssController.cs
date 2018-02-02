@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Xml;
 using YaleRss.Data;
@@ -152,8 +153,8 @@ namespace YaleRss.Controllers
             {
                 Id = $"{lecture.LectureNumber}.{lecture.Name}",
                 Published = lecture.DateOfLecture,
-                Title = lecture.Name,
-                Description = lecture.Overview,
+                Title = WebUtility.HtmlDecode( lecture.Name),
+                Description = WebUtility.HtmlDecode(lecture.Overview),
             };
 
             item.AddLink(new SyndicationLink(GetAudioUri(courseId, lecture)) { MediaType = "audio/mpeg" });
