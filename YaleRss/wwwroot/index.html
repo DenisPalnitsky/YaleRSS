@@ -28,9 +28,39 @@
 </head>
 
 <body>
-    
+    <header>
+
+        <div class="navbar navbar-dark bg-dark box-shadow">
+
+            <div class="container d-flex">
+                <div class="mr-auto p-2 navbar-brand"><h3>Yale Open Lectures in Rss Format</h3></div>
+
+
+                <div class="p-2">
+                </div>
+
+                <nav class="nav nav-masthead justify-content-center">
+
+                    <a class="nav-link" href="/rss/all" target="_blank">
+                        All in One Rss Feed
+                    </a>
+                </nav>
+
+                <div class="p-2">
+                    <a href="/rss/all" target="_blank">
+                        <img src="images/feed-icon-24x24.png" alt="Rss" />
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+
+
+
     <div ng-app="myApp" ng-controller="myCtrl" class="container">
-        <h1 class="masthead-brand">Yale Open Lectures in Rss Format</h1>
+
         <br />
         <table class="table table-striped">
             <thead class="thead-dark">
@@ -63,10 +93,10 @@
 
                 </td>
 
-                <td>
-
-                    <a target="_blank" href="{{ x.Link }}">RSS link</a>
-
+                <td class="ver">
+                    <a target="_blank" href="{{ x.Link }}" type="text/xml">
+                        RSS Feed
+                    </a>
                 </td>
 
                 <td class="text-right">
