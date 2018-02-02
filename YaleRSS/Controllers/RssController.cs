@@ -56,15 +56,34 @@ namespace YaleRss.Controllers
 
             var rssStream = BuildRssStream(items, course.Name);
 
-            var response = new ContentResult()
+            return PrepareActionResult(rssStream);
+        }
+
+        private static IActionResult PrepareActionResult(byte[] rssStream)
+        {
+            return new ContentResult()
             {
                 Content = Encoding.UTF8.GetString(rssStream),
                 StatusCode = Microsoft.AspNetCore.Http.StatusCodes.Status200OK,
                 ContentType = "text/xml"
             };
-
-            return response;
         }
+
+        [HttpGet("rss/all")]
+        public IActionResult GetAllLectures()
+        {
+            var courses = _repo.GetAllCourses();
+            var items = new List<SyndicationItem>();
+            foreach (var course in courses.OrderByDescending(c=> c.IsRecommended )) 
+            {
+                items.AddRange(BuildRssItems(course)); 
+            }
+
+            var rssStream = BuildRssStream(items, "All Lectures");
+
+            return PrepareActionResult(rssStream);
+        }
+
 
         private List<SyndicationItem> BuildRssItems(CourseEntity course)
         {
