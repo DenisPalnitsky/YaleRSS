@@ -23,27 +23,27 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="css/site.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/site.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
+    
     <div ng-app="myApp" ng-controller="myCtrl" class="container">
-        <h1>Yale Open Lectures in Rss Format</h1>
-
-        
-        <table class="table table-striped" >
+        <h1 class="masthead-brand">Yale Open Lectures in Rss Format</h1>
+        <br />
+        <table class="table table-striped">
             <thead class="thead-dark">
                 <tr>
-                  
-                    <th scope="col" >
+                    <th scope="col">
                         Name
                     </th>
 
-                    <th scope="col" >
+                    <th scope="col">
                         Rss
                     </th>
-                    
-                    <th scope="col" >
+
+                    <th scope="col" class="text-right">
                         Lectures
                     </th>
 
@@ -51,14 +51,16 @@
             </thead>
 
             <tr ng-hide="isLoaded">
-                <td colspan="4" class="text-center">Loading data</td>
+                <td colspan="4" class="text-center">
+                    <i class="fa fa-refresh fa-spin" style="font-size:36px"></i>
+                </td>
             </tr>
             <tr ng-repeat="x in rssList |  orderBy:['-IsRecommended', 'Name']" ng-class="(x.IsRecommended == true)? 'table-success' : ''">
-                
-                <td >
+
+                <td>
                     <a href="{{ x.CourseLink }}"> {{ x.Name }}</a> <br />
                     <span class="text-muted"><small> {{ x.Department }}</small></span>
-                    
+
                 </td>
 
                 <td>
@@ -85,15 +87,15 @@
                 Most of the lectures and course material within Open Yale Courses are licensed under a Creative Commons Attribution-Noncommercial-Share Alike 3.0 license. Unless explicitly set forth in the applicable Credits section of a lecture, third-party content is not covered under the Creative Commons license. Please consult the Open Yale Courses Terms of Use for limitations and further explanations on the application of the Creative Commons license.
             </p>
         </div>
-        
+
     </div>
 
     <footer class="footer">
         <div class="container">
             <span class="text-muted">
-                This is open source project published on <a href="https://github.com/DenisPalnitsky/YaleRSS">Git Hub</a>. 
+                This is open source project published on <a href="https://github.com/DenisPalnitsky/YaleRSS">Git Hub</a>.
                 All question or concers please send to  <a href="mailto:palnitsky@gmail.com?Subject=Yale%20rss" target="_top">palnitsky@gmail.com</a>
-            </span>            
+            </span>
         </div>
     </footer>
 
@@ -106,7 +108,7 @@
         app.controller('myCtrl', function ($scope, $http) {
             $http.get("rss/list")
                 .then(function (response) {
-                   
+
                     $scope.rssList = response.data.filter(x => x.IsAvailable === true);
                     $scope.isLoaded = true;
                 });
